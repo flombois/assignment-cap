@@ -38,9 +38,9 @@ public final class RecordUtils {
 
     public static Record randomInvalid(int transactionReference) {
         Random random = new Random();
-        BigDecimal startBalance = BigDecimal.valueOf(random.nextDouble()).setScale(Record.SCALE, Record.ROUNDING_MODE);
-        BigDecimal mutation = BigDecimal.valueOf(random.nextDouble()).setScale(Record.SCALE, Record.ROUNDING_MODE);
-        BigDecimal endBalance = BigDecimal.valueOf(random.nextDouble()).setScale(Record.SCALE, Record.ROUNDING_MODE);
+        BigDecimal startBalance = BigDecimal.valueOf(random.nextDouble(0.0, 10.0));
+        BigDecimal mutation = BigDecimal.valueOf(random.nextDouble(10.0, 20.0));
+        BigDecimal endBalance = BigDecimal.valueOf(random.nextDouble(50.0, 100.0));
         return of(transactionReference, "NL91ABNA0417164300", "",
                 startBalance, mutation, endBalance);
     }
