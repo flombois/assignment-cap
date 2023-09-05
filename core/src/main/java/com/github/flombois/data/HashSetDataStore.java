@@ -1,0 +1,25 @@
+package com.github.flombois.data;
+
+import com.github.flombois.data.DataStore;
+
+import java.util.HashSet;
+
+public class HashSetDataStore<T> implements DataStore<T> {
+
+    private final HashSet<T> hashSet = new HashSet<>();
+
+    @Override
+    public boolean add(T data) {
+        return hashSet.add(data);
+    }
+
+    @Override
+    public boolean contains(T data) {
+        return hashSet.contains(data);
+    }
+
+    @Override
+    public void clear() {
+        hashSet.clear();
+    }
+}
