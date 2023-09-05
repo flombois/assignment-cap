@@ -15,12 +15,17 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
         this.validationError = ValidationError.NO_ERROR;
     }
 
+    private ValidationResult(R record, ValidationError validationError) {
+        super(record);
+        this.validationError = validationError;
+    }
+
     public static <R extends Record> ValidationResult<R> success(@NotNull R record) {
-        throw new UnsupportedOperationException();
+        return new ValidationResult<>(record);
     }
 
     public static <R extends Record> ValidationResult<R> error(@NotNull R record, @NotNull String errorMessage) {
-        throw new UnsupportedOperationException();
+        return new ValidationResult<>(record, new ValidationError(errorMessage));
     }
 
     public boolean isValid() {

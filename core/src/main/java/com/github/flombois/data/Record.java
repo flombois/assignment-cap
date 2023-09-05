@@ -3,8 +3,12 @@ package com.github.flombois.data;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Record {
+
+    public final static int SCALE = 2;
+    public final static RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
     @NotNull
     private final int transactionReference;
@@ -24,9 +28,9 @@ public class Record {
         this.transactionReference = transactionReference;
         this.accountNumber = accountNumber;
         this.description = description;
-        this.startBalance = startBalance;
-        this.mutation = mutation;
-        this.endBalance = endBalance;
+        this.startBalance = startBalance.setScale(SCALE, ROUNDING_MODE);
+        this.mutation = mutation.setScale(SCALE, ROUNDING_MODE);
+        this.endBalance = endBalance.setScale(SCALE, ROUNDING_MODE);
     }
 
     public int getTransactionReference() {

@@ -1,7 +1,5 @@
 package com.github.flombois.data;
 
-import com.github.flombois.data.DataStore;
-
 import java.util.HashSet;
 
 public class HashSetDataStore<T> implements DataStore<T> {

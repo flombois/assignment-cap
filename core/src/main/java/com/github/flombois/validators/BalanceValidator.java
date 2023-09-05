@@ -10,7 +10,7 @@ public class BalanceValidator implements RecordValidator<Record> {
     public ValidationResult<Record> validate(Record record) {
         // Compute expected end balance
         BigDecimal computedBalance = record.getStartBalance().add(record.getMutation());
-        if (areEquals(computedBalance, record.getEndBalance())) {
+        if (!areEquals(computedBalance, record.getEndBalance())) {
             return ValidationResult.error(record, String.format(
                     "Transaction %s balance is invalid, expected end balance to be %s but is %s",
                     record.getTransactionReference(), record.getEndBalance(), computedBalance));
@@ -19,6 +19,6 @@ public class BalanceValidator implements RecordValidator<Record> {
     }
 
     private boolean areEquals(BigDecimal a, BigDecimal b) {
-        return a.compareTo(b) == 0;
+        return a.setScale(Record.SCALE, Record.ROUNDING_MODE).compareTo(b.setScale(Record.SCALE, Record.ROUNDING_MODE)) == 0;
     }
 }

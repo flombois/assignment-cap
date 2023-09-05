@@ -4,8 +4,11 @@ import com.github.flombois.data.DataStore;
 import com.github.flombois.data.Record;
 
 public class DuplicateTransactionValidator implements RecordValidator<Record> {
-
     private DataStore<Integer> store;
+
+    public DuplicateTransactionValidator(DataStore<Integer> store) {
+        setStore(store);
+    }
 
     @Override
     public ValidationResult<Record> validate(Record record) {
@@ -17,7 +20,7 @@ public class DuplicateTransactionValidator implements RecordValidator<Record> {
         return ValidationResult.success(record);
     }
 
-    public DataStore<Integer> getStore() {
+    protected DataStore<Integer> getStore() {
         return store;
     }
 
