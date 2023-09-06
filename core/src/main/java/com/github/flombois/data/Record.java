@@ -9,14 +9,12 @@ import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@XmlRootElement(name = "record")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Record {
 
     public final static int SCALE = 2;
     public final static RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
-
-    private final static MappingStrategy<Record> MAPPING = new ColumnPositionMappingStrategy();
 
     @NotNull
     @CsvBindByPosition(position = 0, required = true)

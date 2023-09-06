@@ -25,7 +25,7 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
     }
 
     public static <R extends Record> ValidationResult<R> error(@NotNull R record, @NotNull String errorMessage) {
-        return new ValidationResult<>(record, new ValidationError(errorMessage));
+        return new ValidationResult<>(record, ValidationError.of(errorMessage));
     }
 
     public boolean isValid() {
