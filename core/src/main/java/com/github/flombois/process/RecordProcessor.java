@@ -5,9 +5,9 @@ import com.github.flombois.data.Record;
 import java.util.List;
 
 
-public interface RecordProcessor<R extends Record> {
+public interface RecordProcessor<T> {
 
-    List<ProcessingResult<R>> process(List<R> records);
+    List<ProcessingResult<T>> process(List<T> records);
 
 
 }

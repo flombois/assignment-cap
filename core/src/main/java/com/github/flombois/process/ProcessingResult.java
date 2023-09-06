@@ -2,15 +2,15 @@ package com.github.flombois.process;
 
 import com.github.flombois.data.Record;
 
-public abstract class ProcessingResult<R extends Record> {
+public abstract class ProcessingResult<T> {
 
-    private final R record;
+    private final T record;
 
-    protected ProcessingResult(R record) {
+    protected ProcessingResult(T record) {
         this.record = record;
     }
 
-    public R getRecord() {
+    public T getRecord() {
         return record;
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InvalidRecordsReport implements Report<ValidationResult<Record>> {
+
     @Override
     public String report(List<ValidationResult<Record>> results) {
         return results.stream()
