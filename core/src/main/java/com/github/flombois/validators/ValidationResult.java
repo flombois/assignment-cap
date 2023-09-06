@@ -36,8 +36,8 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
     @Override
     public String report() {
         if (isValid())
-            return String.format("Transaction %s is valid", getRecord().getTransactionReference());
-        return String.format("Transaction %s is invalid:\n\t%s", getRecord().getTransactionReference(),
+            return String.format("Transaction %s is valid", getRecord().getReference());
+        return String.format("Transaction %s is invalid:\n\t%s", getRecord().getReference(),
                 getValidationError().errorMessage());
     }
 

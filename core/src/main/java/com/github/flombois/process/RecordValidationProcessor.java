@@ -7,7 +7,7 @@ import com.github.flombois.validators.DuplicateTransactionValidator;
 import com.github.flombois.validators.RecordValidator;
 import com.github.flombois.validators.ValidationResult;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 public class RecordValidationProcessor implements RecordProcessor<Record> {
@@ -18,8 +18,8 @@ public class RecordValidationProcessor implements RecordProcessor<Record> {
     );
 
     @Override
-    public Collection<ProcessingResult<Record>> process(Collection<Record> records) {
-        // Process the record collection and place each result in an unmodifiable list.
+    public List<ProcessingResult<Record>> process(List<Record> records) {
+        // Process the record List and place each result in an unmodifiable list.
         return records.stream().map(this::process).toList();
     }
 

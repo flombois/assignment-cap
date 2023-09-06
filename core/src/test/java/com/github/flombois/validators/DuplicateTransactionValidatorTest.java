@@ -1,11 +1,7 @@
-package validators;
+package com.github.flombois.validators;
 
 import com.github.flombois.data.HashSetDataStore;
 import com.github.flombois.data.Record;
-import com.github.flombois.validators.DuplicateTransactionValidator;
-import com.github.flombois.validators.RecordValidator;
-import com.github.flombois.validators.ValidationError;
-import com.github.flombois.validators.ValidationResult;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

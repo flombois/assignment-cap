@@ -1,11 +1,11 @@
-package process;
+package com.github.flombois.process;
 
 import com.github.flombois.process.ProcessingResult;
 import com.github.flombois.process.RecordProcessor;
 import com.github.flombois.data.Record;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -14,12 +14,12 @@ public interface RecordProcessorTest<R extends Record> {
 
     RecordProcessor<R> newRecordProcessor();
 
-    Collection<R> newRecords();
+    List<R> newRecords();
 
     @Test
     default void givenRecords_whenProcess_thenReturnResults() {
-        Collection<R> records = newRecords();
-        Collection<ProcessingResult<R>> results = newRecordProcessor().process(records);
+        List<R> records = newRecords();
+        List<ProcessingResult<R>> results = newRecordProcessor().process(records);
         assertNotNull(results);
         assertEquals(records.size(), results.size());
     }

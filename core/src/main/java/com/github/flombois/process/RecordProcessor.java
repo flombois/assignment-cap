@@ -2,12 +2,12 @@ package com.github.flombois.process;
 
 import com.github.flombois.data.Record;
 
-import java.util.Collection;
+import java.util.List;
 
 
 public interface RecordProcessor<R extends Record> {
 
-    Collection<ProcessingResult<R>> process(Collection<R> records);
+    List<ProcessingResult<R>> process(List<R> records);
 
 
 }

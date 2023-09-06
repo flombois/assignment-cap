@@ -12,11 +12,11 @@ public class DuplicateTransactionValidator implements RecordValidator<Record> {
 
     @Override
     public ValidationResult<Record> validate(Record record) {
-        if(store.contains(record.getTransactionReference())) {
+        if(store.contains(record.getReference())) {
             return ValidationResult.error(record, String.format("Transaction with reference %s has already been " +
-                    "processed", record.getTransactionReference()));
+                    "processed", record.getReference()));
         }
-        store.add(record.getTransactionReference());
+        store.add(record.getReference());
         return ValidationResult.success(record);
     }
 

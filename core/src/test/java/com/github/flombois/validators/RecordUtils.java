@@ -1,4 +1,4 @@
-package validators;
+package com.github.flombois.validators;
 
 import com.github.flombois.data.Record;
 

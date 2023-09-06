@@ -13,7 +13,7 @@ public class BalanceValidator implements RecordValidator<Record> {
         if (!areEquals(computedBalance, record.getEndBalance())) {
             return ValidationResult.error(record, String.format(
                     "Transaction %s balance is invalid, expected end balance to be %s but is %s",
-                    record.getTransactionReference(), record.getEndBalance(), computedBalance));
+                    record.getReference(), record.getEndBalance(), computedBalance));
         }
         return ValidationResult.success(record);
     }
