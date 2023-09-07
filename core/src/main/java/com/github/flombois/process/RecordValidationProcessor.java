@@ -8,8 +8,12 @@ import com.github.flombois.validators.RecordValidator;
 import com.github.flombois.validators.ValidationResult;
 
 import java.util.List;
-import java.util.List;
 
+/**
+ * Validate records in this order:
+ * First check duplicated reference
+ * Then check balance
+ */
 public class RecordValidationProcessor implements RecordProcessor<Record> {
 
     private final List<RecordValidator<Record>> validators = List.of(
@@ -23,10 +27,16 @@ public class RecordValidationProcessor implements RecordProcessor<Record> {
         return records.stream().map(this::process).toList();
     }
 
+    /**
+     * Process a single record, if the first validation result is invalid then validation process stops and
+     * validation result is returned immediately.
+     * @param record The record to process
+     * @return The last valid result or the first invalid result
+     */
     protected ProcessingResult<Record> process(Record record) {
         ValidationResult<Record> result = null;
 
-        // Loop through the validator and return last valid result unless validation fail
+        // Loop through the validators and return last valid result unless validation fails
         // in that case stop the loop and return the result immediately
         for(RecordValidator<Record> validator: validators) {
             result = validator.validate(record);

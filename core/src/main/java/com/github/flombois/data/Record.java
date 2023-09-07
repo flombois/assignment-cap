@@ -1,44 +1,44 @@
 package com.github.flombois.data;
 
-import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvBindByPosition;
-import com.opencsv.bean.MappingStrategy;
-import jakarta.validation.constraints.NotNull;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Java bean that holds record's properties
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class Record {
 
-    public final static int SCALE = 2;
-    public final static RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+    /**
+     * Number of decimal digits used for BigDecimal computing
+     * @see BigDecimal
+     */
+    public static final int SCALE = 2;
 
-    @NotNull
+    public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+
     @CsvBindByPosition(position = 0, required = true)
     @XmlAttribute
     private int reference;
 
-    @NotNull
     @CsvBindByPosition(position = 1, required = true)
     @XmlElement
     private String accountNumber;
 
-    @NotNull
     @CsvBindByPosition(position = 2, required = true)
     private String description;
 
-    @NotNull
     @CsvBindByPosition(position = 3, required = true)
     @XmlElement
     private BigDecimal startBalance;
-    @NotNull
     @CsvBindByPosition(position = 4, required = true)
     @XmlElement
     private BigDecimal mutation;
-    @NotNull
+
     @CsvBindByPosition(position = 5, required = true)
     @XmlElement
     private BigDecimal endBalance;

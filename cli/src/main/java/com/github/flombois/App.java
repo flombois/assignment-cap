@@ -18,10 +18,13 @@ import java.util.List;
 
 import static java.lang.System.exit;
 
+/**
+ * CLI application to validate customer statements
+ */
 public class App  {
 
     public static void main(String[] args ) throws Exception {
-        if(!(args.length > 0)) exitWithError("No input");
+        if(args.length == 0) exitWithError("No input");
         String filePath = args[0];
         InputFormat inputFormat = checkInputFile(filePath);
         if(!InputFormat.UNSUPPORTED.equals(inputFormat)) processInputFile(filePath, inputFormat);
@@ -41,6 +44,13 @@ public class App  {
         printf(resultReport.report((List)processor.process(records)));
     }
 
+    /**
+     * Check if the input file can be processed and will exit application if file is not considered suitable
+     * for processing
+     * @param filePath The file path on the filesystem
+     * @return The probed {@link InputFormat}
+     * @throws IOException Thrown if an error occurs while probing file format
+     */
     public static InputFormat checkInputFile(String filePath) throws IOException {
         Path path = Paths.get(filePath);
 

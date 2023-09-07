@@ -6,6 +6,9 @@ import com.github.flombois.validators.ValidationResult;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Create a report that only contains invalid results
+ */
 public class InvalidRecordsReport implements Report<ValidationResult<Record>> {
 
     @Override

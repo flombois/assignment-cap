@@ -9,8 +9,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public interface DataParserTest<T> {
 
@@ -29,5 +28,37 @@ public interface DataParserTest<T> {
 
         assertNotNull(records);
         assertEquals(10, records.size());
+    }
+
+    // Ensure XML parser properly close the input stream
+    @Test
+    default void givenSamples_whenParse_thenCloseInputStream() throws ParsingException {
+        DataParser<T> recordXmlParser = newParser();
+        ClosedAwareInputStream stream = new ClosedAwareInputStream(
+                new BufferedInputStream(Objects.requireNonNull(getClass()
+                .getResourceAsStream(inputFileName()))));
+
+        assertFalse(stream.isCloseCalled());
+        recordXmlParser.parse(stream);
+        assertTrue(stream.isCloseCalled());
+    }
+
+     class ClosedAwareInputStream extends BufferedInputStream {
+
+        private boolean isClosedCalled = false;
+
+        public ClosedAwareInputStream(InputStream in) {
+            super(in);
+        }
+
+        @Override
+        public void close() throws IOException {
+            super.close();
+            isClosedCalled = true;
+        }
+
+        public boolean isCloseCalled() {
+            return isClosedCalled;
+        }
     }
 }
