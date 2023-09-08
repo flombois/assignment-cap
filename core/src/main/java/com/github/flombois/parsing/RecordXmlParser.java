@@ -2,8 +2,7 @@ package com.github.flombois.parsing;
 
 import com.github.flombois.data.Record;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 import java.util.List;
 
 

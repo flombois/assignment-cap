@@ -1,9 +1,10 @@
 package com.github.flombois.parsing;
 
+import jakarta.xml.bind.JAXBContext;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBContext;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.sax.SAXSource;
@@ -90,7 +91,4 @@ public class XmlParser<T> implements DataParser<T> {
         return marshallingType;
     }
 
-    public void setMarshallingType(Class<?> marshallingType) {
-        this.marshallingType = marshallingType;
-    }
 }

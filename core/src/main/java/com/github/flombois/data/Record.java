@@ -1,8 +1,8 @@
 package com.github.flombois.data;
 
 import com.opencsv.bean.CsvBindByPosition;
+import jakarta.xml.bind.annotation.*;
 
-import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
