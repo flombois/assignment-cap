@@ -4,7 +4,6 @@ import jakarta.xml.bind.JAXBContext;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.sax.SAXSource;
@@ -16,6 +15,7 @@ import java.util.List;
 /**
  * Parse data from an XML formatted input stream
  * This implementation relies on the jaxb api
+ *
  * @param <T> Type of the parsed items
  */
 public class XmlParser<T> implements DataParser<T> {
@@ -38,6 +38,7 @@ public class XmlParser<T> implements DataParser<T> {
 
     /**
      * Constructor
+     *
      * @param marshallingType Type of the wrapper around the list of item to be parsed
      *                        Usually a java bean mapping the XML root element
      */
@@ -47,6 +48,7 @@ public class XmlParser<T> implements DataParser<T> {
 
     /**
      * Parse the input stream and close it
+     *
      * @param inputStream The input stream
      * @return The parsed data as a list of items
      * @throws ParsingException Thrown if an error occurs while parsing
@@ -65,11 +67,12 @@ public class XmlParser<T> implements DataParser<T> {
 
     /**
      * Ensure the XML data source is parsed using a securely configured parser
-     * @see <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html">XML External Entity Prevention Cheat Sheet</a>
+     *
      * @param inputStream Untrusted data source
      * @return A {@link SAXSource} securely configured
      * @throws ParserConfigurationException see {@link SAXParserFactory#newSAXParser()}
-     * @throws SAXException see {@link SAXParserFactory#newSAXParser()}
+     * @throws SAXException                 see {@link SAXParserFactory#newSAXParser()}
+     * @see <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html">XML External Entity Prevention Cheat Sheet</a>
      */
     private SAXSource secureXMLSource(InputStream inputStream) throws ParserConfigurationException, SAXException {
         return new SAXSource(SAX_PARSER_FACTORY.newSAXParser().getXMLReader(),
@@ -79,6 +82,7 @@ public class XmlParser<T> implements DataParser<T> {
 
     /**
      * Convert unmarshalled data into a list of parsed data
+     *
      * @param unmarshalledData The parsed object which type is specified by {@link XmlParser#marshallingType}
      * @return A list of parsed items
      * @throws ParsingException Thrown if an error occurs converting parsed data into a list of items

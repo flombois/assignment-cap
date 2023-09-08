@@ -15,6 +15,7 @@ public class Record {
 
     /**
      * Number of decimal digits used for BigDecimal computing
+     *
      * @see BigDecimal
      */
     public static final int SCALE = 2;
@@ -43,7 +44,8 @@ public class Record {
     @XmlElement
     private BigDecimal endBalance;
 
-    public Record() {}
+    public Record() {
+    }
 
     public Record(int reference, String accountNumber, String description,
                   BigDecimal startBalance, BigDecimal mutation, BigDecimal endBalance) {

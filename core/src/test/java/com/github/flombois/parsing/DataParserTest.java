@@ -1,6 +1,5 @@
 package com.github.flombois.parsing;
 
-import com.github.flombois.data.Record;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedInputStream;
@@ -21,7 +20,7 @@ public interface DataParserTest<T> {
     default void givenSamples_whenParse_thenReturnRecords() throws IOException, ParsingException {
         DataParser<T> recordXmlParser = newParser();
         List<T> records;
-        try(InputStream stream = new BufferedInputStream(Objects.requireNonNull(getClass()
+        try (InputStream stream = new BufferedInputStream(Objects.requireNonNull(getClass()
                 .getResourceAsStream(inputFileName())))) {
             records = recordXmlParser.parse(stream);
         }
@@ -36,14 +35,14 @@ public interface DataParserTest<T> {
         DataParser<T> recordXmlParser = newParser();
         ClosedAwareInputStream stream = new ClosedAwareInputStream(
                 new BufferedInputStream(Objects.requireNonNull(getClass()
-                .getResourceAsStream(inputFileName()))));
+                        .getResourceAsStream(inputFileName()))));
 
         assertFalse(stream.isCloseCalled());
         recordXmlParser.parse(stream);
         assertTrue(stream.isCloseCalled());
     }
 
-     class ClosedAwareInputStream extends BufferedInputStream {
+    class ClosedAwareInputStream extends BufferedInputStream {
 
         private boolean isClosedCalled = false;
 

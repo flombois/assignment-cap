@@ -1,7 +1,5 @@
 package com.github.flombois.data;
 
-import java.util.Random;
-
 public class HashSetDataStoreTest<T> implements DataStoreTest<T> {
 
     @Override

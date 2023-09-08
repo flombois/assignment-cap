@@ -3,7 +3,6 @@ package com.github.flombois.validators;
 import com.github.flombois.data.Record;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Random;
 
 public final class RecordUtils {

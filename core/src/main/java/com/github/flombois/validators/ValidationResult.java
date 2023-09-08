@@ -1,7 +1,6 @@
 package com.github.flombois.validators;
 
 import com.github.flombois.data.Record;
-
 import com.github.flombois.process.ProcessingResult;
 import com.github.flombois.reporting.Reportable;
 
@@ -11,6 +10,7 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
 
     /**
      * Constructor
+     *
      * @param record A valid record
      */
     private ValidationResult(R record) {
@@ -20,7 +20,8 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
 
     /**
      * Constructor
-     * @param record an invalid record
+     *
+     * @param record          an invalid record
      * @param validationError The corresponding validation error
      */
     private ValidationResult(R record, ValidationError validationError) {
@@ -30,9 +31,10 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
 
     /**
      * Create a valid result
+     *
      * @param record The validated record
+     * @param <R>    The type of record
      * @return a valid result
-     * @param <R> The type of record
      */
     public static <R extends Record> ValidationResult<R> success(R record) {
         return new ValidationResult<>(record);
@@ -40,10 +42,11 @@ public class ValidationResult<R extends Record> extends ProcessingResult<R> impl
 
     /**
      * Create an invalid result
-     * @param record The validated record
+     *
+     * @param record       The validated record
      * @param errorMessage The corresponding error message
+     * @param <R>          The type of record
      * @return an invalid result
-     * @param <R> The type of record
      */
     public static <R extends Record> ValidationResult<R> error(R record, String errorMessage) {
         return new ValidationResult<>(record, ValidationError.of(errorMessage));

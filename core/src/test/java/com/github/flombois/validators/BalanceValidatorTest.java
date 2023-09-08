@@ -1,8 +1,7 @@
 package com.github.flombois.validators;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.flombois.data.Record;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
@@ -16,7 +15,7 @@ public class BalanceValidatorTest {
                 BigDecimal.valueOf(12.50), BigDecimal.valueOf(2.60), BigDecimal.valueOf(15.10)));
         assertNotNull(result);
         assertTrue(result.isValid());
-        assertEquals(ValidationError.NO_ERROR,  result.getValidationError());
+        assertEquals(ValidationError.NO_ERROR, result.getValidationError());
     }
 
     @Test
@@ -25,7 +24,7 @@ public class BalanceValidatorTest {
                 BigDecimal.valueOf(12.50), BigDecimal.valueOf(-2.60), BigDecimal.valueOf(9.90)));
         assertNotNull(result);
         assertTrue(result.isValid());
-        assertEquals(ValidationError.NO_ERROR,  result.getValidationError());
+        assertEquals(ValidationError.NO_ERROR, result.getValidationError());
     }
 
     @Test
@@ -34,7 +33,7 @@ public class BalanceValidatorTest {
                 BigDecimal.valueOf(12.50), BigDecimal.ZERO, BigDecimal.valueOf(12.50)));
         assertNotNull(result);
         assertTrue(result.isValid());
-        assertEquals(ValidationError.NO_ERROR,  result.getValidationError());
+        assertEquals(ValidationError.NO_ERROR, result.getValidationError());
     }
 
     @Test

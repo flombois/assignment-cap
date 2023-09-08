@@ -1,7 +1,5 @@
 package com.github.flombois.process;
 
-import com.github.flombois.process.ProcessingResult;
-import com.github.flombois.process.RecordProcessor;
 import com.github.flombois.data.Record;
 import org.junit.jupiter.api.Test;
 

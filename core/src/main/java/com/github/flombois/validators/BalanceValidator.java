@@ -11,6 +11,7 @@ public class BalanceValidator implements RecordValidator<Record> {
 
     /**
      * The record balance is validated if end balance = start balance + mutation
+     *
      * @param record The record to validate
      * @return A valid result if balance calculation is correct, invalid otherwise
      */

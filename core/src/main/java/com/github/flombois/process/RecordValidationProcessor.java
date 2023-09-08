@@ -30,6 +30,7 @@ public class RecordValidationProcessor implements RecordProcessor<Record> {
     /**
      * Process a single record, if the first validation result is invalid then validation process stops and
      * validation result is returned immediately.
+     *
      * @param record The record to process
      * @return The last valid result or the first invalid result
      */
@@ -38,9 +39,9 @@ public class RecordValidationProcessor implements RecordProcessor<Record> {
 
         // Loop through the validators and return last valid result unless validation fails
         // in that case stop the loop and return the result immediately
-        for(RecordValidator<Record> validator: validators) {
+        for (RecordValidator<Record> validator : validators) {
             result = validator.validate(record);
-            if(!result.isValid()) break;
+            if (!result.isValid()) break;
         }
         return result;
     }

@@ -3,6 +3,7 @@ package com.github.flombois.process;
 
 /**
  * Result produced by a {@link RecordProcessor}
+ *
  * @param <T> Type of processed record
  */
 public abstract class ProcessingResult<T> {
@@ -11,6 +12,7 @@ public abstract class ProcessingResult<T> {
 
     /**
      * Constructor
+     *
      * @param record Reference to the processed record
      */
     protected ProcessingResult(T record) {

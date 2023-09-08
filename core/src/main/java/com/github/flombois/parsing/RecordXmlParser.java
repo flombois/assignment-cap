@@ -1,8 +1,9 @@
 package com.github.flombois.parsing;
 
 import com.github.flombois.data.Record;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
-import jakarta.xml.bind.annotation.*;
 import java.util.List;
 
 
@@ -35,13 +36,14 @@ public class RecordXmlParser extends XmlParser<Record> {
 
     /**
      * Convert the parsed {@link Records} object to a list of {@link Record}
+     *
      * @param unmarshalledData An instance of {@link Records}
      * @return A list of {@link Record}
      * @throws ParsingException Thrown if the supplied object is not an instance of {@link Records}
      */
     @Override
     protected List<Record> convert(Object unmarshalledData) throws ParsingException {
-        if(unmarshalledData instanceof Records) {
+        if (unmarshalledData instanceof Records) {
             return ((Records) unmarshalledData).getRecords();
         }
         throw new ParsingException("Unexpected XML input");

@@ -1,11 +1,10 @@
 package com.github.flombois.process;
 
 import com.github.flombois.data.Record;
+import com.github.flombois.validators.RecordUtils;
 import com.github.flombois.validators.ValidationResult;
 import org.junit.jupiter.api.Test;
-import com.github.flombois.validators.RecordUtils;
 
-import java.util.List;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -28,8 +27,8 @@ public class RecordValidationProcessorTest implements RecordProcessorTest<Record
         List<Record> records = IntStream.range(0, 10).mapToObj(RecordUtils::randomValid).toList();
         List<ProcessingResult<Record>> results = new RecordValidationProcessor().process(records);
         for (ProcessingResult<Record> result : results) {
-           assertNotNull(result);
-           assertTrue(((ValidationResult<Record>)result).isValid());
+            assertNotNull(result);
+            assertTrue(((ValidationResult<Record>) result).isValid());
         }
     }
 
@@ -39,7 +38,7 @@ public class RecordValidationProcessorTest implements RecordProcessorTest<Record
         List<ProcessingResult<Record>> results = new RecordValidationProcessor().process(records);
         for (ProcessingResult<Record> result : results) {
             assertNotNull(result);
-            assertFalse(((ValidationResult<Record>)result).isValid());
+            assertFalse(((ValidationResult<Record>) result).isValid());
         }
     }
 }

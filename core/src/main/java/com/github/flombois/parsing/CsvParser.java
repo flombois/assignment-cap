@@ -15,6 +15,7 @@ import java.util.List;
  * Parse data from a CSV formatted input stream
  * This implementation relies on the <a href="https://mvnrepository.com/artifact/com.opencsv/opencsv">opencsv</a>
  * library
+ *
  * @param <T> Type of the parsed items
  */
 public class CsvParser<T> implements DataParser<T> {
@@ -23,6 +24,7 @@ public class CsvParser<T> implements DataParser<T> {
 
     /**
      * Constructor
+     *
      * @param mappingStrategy @see MappingStrategy
      */
     public CsvParser(MappingStrategy<T> mappingStrategy) {
@@ -31,6 +33,7 @@ public class CsvParser<T> implements DataParser<T> {
 
     /**
      * Parse the input stream and close it
+     *
      * @param inputStream The input stream
      * @return The parsed data as a list of items
      * @throws ParsingException Thrown if an error occurs while parsing
@@ -58,7 +61,4 @@ public class CsvParser<T> implements DataParser<T> {
         return mappingStrategy;
     }
 
-    public void setMappingStrategy(MappingStrategy<T> mappingStrategy) {
-        this.mappingStrategy = mappingStrategy;
-    }
 }
