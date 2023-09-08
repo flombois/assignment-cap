@@ -19,13 +19,13 @@ Requires Java 11 and Apache [maven](https://maven.apache.org)
 
 Clone the git repository
 ```shell
-git clone https://github.com/flombois/csp-assignment
+git clone https://github.com/flombois/assignment-csp
 ```
 
 Run the maven install phase that will build the core and cli modules, a runnable jar will be created in the cli/target 
 directory
 ```shell
-cd csp-assignment
+cd assignment-csp
 mvn install
 ```
 
