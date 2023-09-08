@@ -15,7 +15,7 @@ The application will report the following issues:
 
 ### Build & Run
 
-Requires Java 17 and Apache [maven](https://maven.apache.org)  
+Requires Java 11 and Apache [maven](https://maven.apache.org)  
 
 Clone the git repository
 ```shell
