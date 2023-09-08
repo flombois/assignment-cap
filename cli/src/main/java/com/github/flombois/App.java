@@ -21,14 +21,17 @@ import static java.lang.System.exit;
 /**
  * CLI application to validate customer statements
  */
-public class App  {
+public class App {
 
-    public static void main(String[] args ) throws Exception {
-        if(args.length == 0) exitWithError("No input");
+    public static void main(String[] args) throws Exception {
+        if (args.length == 0) exitWithError("No input");
         String filePath = args[0];
         InputFormat inputFormat = checkInputFile(filePath);
-        if(!InputFormat.UNSUPPORTED.equals(inputFormat)) processInputFile(filePath, inputFormat);
-        else exitWithError("Cannot process %s: unsupported format", filePath);
+        if (!InputFormat.UNSUPPORTED.equals(inputFormat)) {
+            processInputFile(filePath, inputFormat);
+        } else {
+            exitWithError("Cannot process %s: unsupported format", filePath);
+        }
     }
 
     public static void processInputFile(String filePath, InputFormat inputFormat) throws IOException, ParsingException {
@@ -36,17 +39,18 @@ public class App  {
         File file = Paths.get(filePath).toFile();
         List<Record> records;
         try (InputStream stream = new BufferedInputStream(new FileInputStream(file))) {
-             records = parser.parse(stream);
+            records = parser.parse(stream);
         }
         // Process and report
         RecordProcessor<Record> processor = new RecordValidationProcessor();
         Report<ValidationResult<Record>> resultReport = new InvalidRecordsReport();
-        printf(resultReport.report((List)processor.process(records)));
+        printf(resultReport.report((List) processor.process(records)));
     }
 
     /**
      * Check if the input file can be processed and will exit application if file is not considered suitable
      * for processing
+     *
      * @param filePath The file path on the filesystem
      * @return The probed {@link InputFormat}
      * @throws IOException Thrown if an error occurs while probing file format
@@ -55,23 +59,27 @@ public class App  {
         Path path = Paths.get(filePath);
 
         // Check file exists and is a regular file
-        if(!Files.isRegularFile(path)) exitWithError("%s is not a regular file", filePath);
+        if (!Files.isRegularFile(path)) exitWithError("%s is not a regular file", filePath);
 
         // Check file is readable
-        if(!Files.isReadable(path)) exitWithError("%s is not readable, check access privileges");
+        if (!Files.isReadable(path)) exitWithError("%s is not readable, check access privileges");
 
         // Check file format
         String contentType = Files.probeContentType(path);
-        if (InputFormat.CSV.getSupportedMimeTypes().contains(contentType)) return InputFormat.CSV;
-        if (InputFormat.XML.getSupportedMimeTypes().contains(contentType)) return InputFormat.XML;
+        if (InputFormat.CSV.getSupportedMimeTypes().contains(contentType)) {
+            return InputFormat.CSV;
+        }
+        if (InputFormat.XML.getSupportedMimeTypes().contains(contentType)) {
+            return InputFormat.XML;
+        }
         return InputFormat.UNSUPPORTED;
     }
 
-    private static void printf(String format, Object ... args) {
+    private static void printf(String format, Object... args) {
         System.out.printf(format, args);
     }
 
-    private static void exitWithError(String format, Object ... args) {
+    private static void exitWithError(String format, Object... args) {
         printf(format, args);
         exit(1);
     }
