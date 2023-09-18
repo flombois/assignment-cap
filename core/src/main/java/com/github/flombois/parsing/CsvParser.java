@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CsvParser<T> implements DataParser<T> {
 
-    private MappingStrategy<T> mappingStrategy;
+    private final MappingStrategy<T> mappingStrategy;
 
     /**
      * Constructor

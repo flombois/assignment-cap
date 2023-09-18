@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class XmlParser<T> implements DataParser<T> {
 
-    private Class<?> marshallingType;
+    private final Class<?> marshallingType;
 
     private static final SAXParserFactory SAX_PARSER_FACTORY = SAXParserFactory.newInstance();
 

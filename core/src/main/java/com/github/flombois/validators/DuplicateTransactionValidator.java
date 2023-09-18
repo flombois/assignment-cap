@@ -8,7 +8,7 @@ import com.github.flombois.data.Record;
  */
 public class DuplicateTransactionValidator implements RecordValidator<Record> {
 
-    private DataStore<Integer> store;
+    private final DataStore<Integer> store;
 
     public DuplicateTransactionValidator(DataStore<Integer> store) {
         this.store = store;
